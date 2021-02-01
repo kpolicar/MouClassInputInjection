@@ -23,6 +23,7 @@ for more information.
 //=============================================================================
 #define DRIVER_NAME_U           L"MouClassInputInjection"
 #define LOCAL_DEVICE_PATH_U     (L"\\\\.\\" DRIVER_NAME_U)
+#define NT_DRIVER_NAME_U        (L"\\Driver\\" DRIVER_NAME_U)
 #define NT_DEVICE_NAME_U        (L"\\Device\\" DRIVER_NAME_U)
 #define SYMBOLIC_LINK_NAME_U    (L"\\DosDevices\\" DRIVER_NAME_U)
 

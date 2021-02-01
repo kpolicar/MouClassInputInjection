@@ -82,5 +82,8 @@
     <ClInclude Include="mouse_input_validation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

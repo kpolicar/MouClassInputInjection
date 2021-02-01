@@ -16,18 +16,10 @@ for more information.
 #include "mouhid_hook_manager.h"
 
 #include "../Common/ioctl.h"
+#include "stdafx.h"
 
 
-//=============================================================================
-// Meta Interface
-//=============================================================================
-_Use_decl_annotations_
-EXTERN_C
-NTSTATUS
-DriverEntry(
-    PDRIVER_OBJECT pDriverObject,
-    PUNICODE_STRING pRegistryPath
-)
+NTSTATUS driver_initialize(PDRIVER_OBJECT pDriverObject, PUNICODE_STRING pRegistryPath)
 {
     PDEVICE_OBJECT pDeviceObject = NULL;
     UNICODE_STRING usDeviceName = {};
@@ -152,6 +144,25 @@ exit:
     }
 
     return ntstatus;
+}
+
+//=============================================================================
+// Meta Interface
+//=============================================================================
+_Use_decl_annotations_
+EXTERN_C
+NTSTATUS
+DriverEntry(
+    PDRIVER_OBJECT pDriverObject,
+    PUNICODE_STRING pRegistryPath
+)
+{
+    UNREFERENCED_PARAMETER(pDriverObject);
+    UNREFERENCED_PARAMETER(pRegistryPath);
+
+    UNICODE_STRING  drv_name;
+    RtlInitUnicodeString(&drv_name, NT_DRIVER_NAME_U);
+    return IoCreateDriver(&drv_name, &driver_initialize);
 }
 
 
